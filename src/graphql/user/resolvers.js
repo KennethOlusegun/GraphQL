@@ -1,25 +1,13 @@
 /* eslint-disable prettier/prettier */
-const user = () => {
-    return {
-        id: '1',
-        userName: 'Kenneth',
-    };
+const user = async(_, __, { fetch }) => {
+    const user = await fetch('http://localhost:8080/users/602');
+    return user.json();
 };
 
-const users = () => {
-    return [{
-            id: '1',
-            userName: 'Kenneth',
-        },
-        {
-            id: '2',
-            userName: 'Olusegun',
-        },
-        {
-            id: '3',
-            userName: 'Obàfèmi',
-        },
-    ];
+const users = async(_, __, { fetch }) => {
+    console.log(fetch);
+    const users = await fetch('http://localhost:8080/users');
+    return users.json();
 };
 
 export const userResolvers = {
