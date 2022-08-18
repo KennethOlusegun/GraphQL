@@ -1,25 +1,12 @@
 /* eslint-disable prettier/prettier */
-const post = () => {
-    return {
-        id: '1',
-        title: 'GraphQL',
-    };
+const post = async(_, { id }, { getPosts }) => {
+    const response = await getPosts('/' + id);
+    return response.json();
 };
 
-const posts = () => {
-    return [{
-            id: '1',
-            title: 'GraphQL',
-        },
-        {
-            id: '2',
-            title: 'Apollo',
-        },
-        {
-            id: '3',
-            title: 'Prisma',
-        },
-    ];
+const posts = async(_, __, { getPosts }) => {
+    const response = await getPosts();
+    return response.json();
 };
 
 export const postResolvers = {
