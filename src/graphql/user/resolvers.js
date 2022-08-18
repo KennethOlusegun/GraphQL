@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-const user = async(__, { id }, { getUsers }) => {
+const user = async(__, { id, teste }, { getUsers }) => {
+    console.log('testando', teste);
     const response = await getUsers('/' + id);
     const user = await response.json();
     return user;
