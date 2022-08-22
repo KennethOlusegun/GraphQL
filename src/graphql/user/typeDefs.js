@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { gql } from 'apollo-server-core';
 
-export const userTypeDefs = gql `
+export const userTypeDefs = gql`
   extend type Query {
     user(id: ID!): User!
-    users: [User!]!
+    users(data: ApiFiltersInput): [User!]!
   }
 
   type User {

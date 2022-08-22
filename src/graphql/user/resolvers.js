@@ -1,19 +1,19 @@
 /* eslint-disable prettier/prettier */
-const user = async(__, { id }, { getUsers }) => {
-    const response = await getUsers('/' + id);
-    const user = await response.json();
-    return user;
+const users = async (_, { input }, { getUsers }) => {
+  const apiFiltersInput = new URLSearchParams(input);
+  const users = await getUsers('/?' + apiFiltersInput);
+  return users.json();
 };
 
-const users = async(_, __, { fetch }) => {
-    console.log(fetch);
-    const users = await fetch('http://localhost:8080/users');
-    return users.json();
+const user = async (__, { id }, { getUsers }) => {
+  const response = await getUsers('/' + id);
+  const user = await response.json();
+  return user;
 };
 
 export const userResolvers = {
-    Query: {
-        user,
-        users,
-    },
+  Query: {
+    user,
+    users
+  }
 };
