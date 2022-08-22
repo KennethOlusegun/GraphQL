@@ -1,0 +1,22 @@
+query GET_POST {
+  post1: post(id: "860") {
+    __typename
+
+    ... on Post {
+      id
+      title
+    }
+    ... on PostError {
+      statusCode
+      message
+
+      ... on PostNotFound {
+        postId
+      }
+
+      ... on PostTimeoutError {
+        timeout
+      }
+    }
+  }
+}
